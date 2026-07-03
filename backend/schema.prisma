@@ -1,0 +1,72 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./aura.db"
+}
+
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   // "customer" | "staff" | "admin"
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  name          String
+  brand         String
+  category      String
+  price         Float
+  originalPrice Float
+  rating        Float    @default(0.0)
+  reviews       Int      @default(0)
+  description   String
+  images        String   // comma-separated URLs
+  sizes         String   // comma-separated sizes
+  colors        String   // comma-separated colors
+  tags          String   // comma-separated tags
+  inStock       Boolean  @default(true)
+}
+
+model Store {
+  id      Int    @id @default(autoincrement())
+  name    String
+  city    String
+  address String
+  phone   String
+  hours   String @default("10AM–10PM")
+}
+
+model Inventory {
+  productId Int
+  storeId   Int
+  stock     Int
+
+  @@id([productId, storeId])
+}
+
+model Wishlist {
+  id        Int @id @default(autoincrement())
+  userId    Int
+  productId Int
+
+  @@unique([userId, productId])
+}
+
+model Reservation {
+  id          String @id
+  userId      Int
+  productId   Int
+  storeId     Int
+  size        String
+  status      String // "pending" | "confirmed" | "collected" | "cancelled"
+  createdAt   String
+  expiresAt   String
+  staffNote   String @default("")
+}
