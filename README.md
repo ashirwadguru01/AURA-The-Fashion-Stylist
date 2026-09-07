@@ -1,210 +1,156 @@
 # 🌟 AURA – The Fashion Stylist
 
-AURA is an intelligent fashion styling and shopping assistant designed to help users **discover outfits, manage their wardrobe, receive personalized recommendations, and find recommended products both online and in nearby physical stores**.
+AURA is an intelligent fashion styling application that uses a **hybrid recommendation approach** to help users curate outfits, manage their wardrobe, and receive personalized fashion recommendations based on their preferences, body type, occasion, weather, and current trends.
+
+The system combines **rule-based styling, machine-learning techniques, computer vision, and feedback-based recommendation** to provide a personalized virtual fashion stylist.
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-* **Personalized Recommendations:** Get outfit suggestions based on individual preferences, body type, colors, style, and occasions.
-* **Virtual Wardrobe Management:** Organize and digitize clothing items in one place.
-* **Hybrid Outfit Recommendation:** Combines user preferences, styling rules, and ML-based recommendation techniques.
-* **Trend Analysis:** Incorporates fashion trends and seasonal aesthetics into outfit recommendations.
-* **Interactive Stylist Assistant:** Interact with AURA to receive personalized styling suggestions.
-* **Online Product Discovery:** Find recommended clothing and accessories from integrated online stores with product details, prices, sizes, and availability.
-* **Offline Store Discovery:** Find recommended products in nearby physical stores based on store location and inventory availability.
-* **Exact & Similar Product Matching:** If the exact recommended product is unavailable, AURA suggests visually and stylistically similar alternatives.
-* **Price & Availability Comparison:** Compare products across available online and offline stores.
+* **Hybrid Outfit Recommendation:** Combines user preferences, predefined styling rules, and recommendation algorithms to generate personalized outfits.
+* **Personalized Styling:** Recommends outfits based on body type, preferred colors, fashion style, occasion, and user preferences.
+* **Virtual Wardrobe:** Allows users to digitally organize and manage their clothing items.
+* **Occasion-Based Styling:** Suggests suitable outfits for casual, formal, party, college, and other occasions.
+* **Trend Analysis:** Incorporates fashion trends and seasonal styles into recommendations.
+* **Interactive Stylist Assistant:** Allows users to interact with AURA and receive outfit suggestions through a conversational interface.
 * **Feedback-Based Recommendations:** Uses user likes, dislikes, and previous selections to improve future recommendations.
+* **Image-Based Fashion Analysis:** Uses YOLO for detecting and identifying clothing-related objects from images.
 
 ---
 
-## 🧠 Hybrid AI & Shopping Integration
+## 🧠 Hybrid AI Integration
 
-AURA uses a **hybrid recommendation architecture** that combines rule-based styling, user preferences, ML-based recommendations, and real-world product availability.
+AURA follows a **hybrid recommendation architecture** by combining multiple approaches:
 
 ```text
-                    User Preferences
-                          ↓
-                    Virtual Wardrobe
-                          ↓
-                 AURA Recommendation
-                          ↓
-              ┌───────────────────────┐
-              │ Hybrid Recommendation │
-              │       Engine          │
-              └───────────────────────┘
-                    ↓          ↓
-             Styling Rules    ML Model
-                    ↓          ↓
-                    └────┬─────┘
-                         ↓
-                Personalized Outfit
-                         ↓
-                Product Identification
-                         ↓
-             Product Matching Engine
-                    ↓          ↓
-             Online Stores   Physical Stores
-                    ↓          ↓
-             Price/Stock     Location/Stock
-                    ↓          ↓
-                    └────┬─────┘
-                         ↓
-                 Unified Results
-                         ↓
-                    User Feedback
+                 User Preferences
+                        ↓
+                  Wardrobe Data
+                        ↓
+              ┌───────────────────┐
+              │ Recommendation    │
+              │     Engine        │
+              └───────────────────┘
+                 ↑      ↑      ↑
+                 │      │      │
+          Styling Rules │    ML / AI
+                 │      │      │
+                 └──────┼──────┘
+                        ↑
+              Trend & Occasion Data
+                        ↓
+              Personalized Outfit
+                        ↓
+                  User Feedback
+                        ↓
+              Recommendation Update
 ```
+
+### 1. Rule-Based Recommendation
+
+Predefined fashion rules are used for basic styling decisions.
+
+For example:
+
+* Formal occasion → Shirt + Trousers + Formal Shoes
+* Summer → Light-colored and breathable clothing
+* Party → Stylish top + Bottom + Suitable footwear
+* Color combinations → Avoid conflicting colors
+
+This provides reliable recommendations even when limited user data is available.
 
 ---
 
-## 🛍️ Hybrid Store Integration
+### 2. ML/AI-Based Recommendation
 
-AURA bridges the gap between **fashion recommendations and real-world shopping**.
+The recommendation system can use:
 
-After generating an outfit, the system identifies the individual products required to create that outfit and searches connected product catalogs.
-
-### Online Store Integration
-
-Users can discover products available through online stores with information such as:
-
-* Product name
-* Brand
-* Price
-* Size
-* Color
-* Product image
-* Availability
-* Purchase link
-
-Example:
-
-```text
-Recommended Outfit
-        ↓
-Black Oversized Shirt
-        ↓
-Online Product Search
-        ↓
-Brand X
-₹1,499
-Size: M, L, XL
-In Stock
-```
-
-### Physical Store Integration
-
-AURA can also help users locate recommended products at nearby physical stores.
-
-Users can view:
-
-* Store name
-* Product name
-* Price
-* Available sizes
-* Stock availability
-* Store distance
-* Store location/directions
-
-Example:
-
-```text
-Black Oversized Shirt
-
-Store: Fashion Store X
-Distance: 2.4 km
-Price: ₹1,499
-Size: M
-Availability: In Stock
-```
-
----
-
-## 🔍 Product Matching System
-
-AURA supports both **exact product matching** and **similar product recommendations**.
-
-```text
-Recommended Product
-        ↓
-Search Product Catalog
-        ↓
-Exact Product Available?
-      /       \
-    Yes        No
-     ↓          ↓
-Show Exact    Find Similar
-Product       Products
-     ↓          ↓
-     └────┬─────┘
-          ↓
- Online + Offline Results
-```
-
-Similar products can be matched using attributes such as:
-
-* Category
-* Color
-* Brand
-* Style
-* Material
-* Price range
-* Size
 * User preferences
+* Previously selected outfits
+* Likes and dislikes
+* Clothing attributes
+* Body type
+* Occasion
+* Weather
+* Fashion trends
+
+The system uses these factors to identify and rank suitable outfit combinations.
 
 ---
 
-## ⚙️ System Architecture
+### 3. YOLO-Based Image Analysis
+
+AURA uses **YOLO (You Only Look Once)** for image-based object detection.
+
+When a user uploads an image, YOLO can detect relevant objects such as clothing items.
 
 ```text
-React Frontend
-       ↓
-Node.js / Express Backend
-       ↓
+User Image
+    ↓
+YOLO Model
+    ↓
+Object Detection
+    ↓
+Clothing Attributes
+    ↓
 Recommendation Engine
-       ↓
-Product Matching Service
-       ↓
- ┌──────────────┬───────────────┬────────────────┐
- ↓              ↓               ↓
-ML Model     Online APIs     Store APIs
- ↓              ↓               ↓
- └──────────────┴───────────────┘
-                       ↓
-               Unified Product Data
-                       ↓
-                AURA Frontend
 ```
+
+This allows visual information to be incorporated into the recommendation process.
 
 ---
 
-## 🔄 Application Workflow
+### 4. Hybrid Scoring
+
+Each outfit can be assigned a combined score based on multiple factors:
 
 ```text
-User
- ↓
-Enter Preferences / Add Clothes
- ↓
-Virtual Wardrobe
- ↓
-Generate Outfit
- ↓
-Apply Styling Rules + ML Recommendation
- ↓
-Identify Required Products
- ↓
-Search Online & Offline Catalogs
- ↓
-Match Exact / Similar Products
- ↓
-Display Price + Availability + Location
- ↓
-User Selects Product
- ↓
-Feedback
- ↓
-Improve Future Recommendations
+Final Score =
+Preference Score
++ Occasion Score
++ Compatibility Score
++ Trend Score
++ Feedback Score
 ```
+
+The highest-scoring outfits are recommended to the user.
+
+---
+
+### 5. Reinforcement Learning
+
+Reinforcement Learning can be used to make the recommendation process adaptive.
+
+The recommendation system acts as an **agent** that learns from user interactions.
+
+```text
+        User Preferences
+               ↓
+          RL Agent
+               ↓
+       Outfit Recommendation
+               ↓
+          User Feedback
+          ↙           ↘
+       Like           Dislike
+        ↓               ↓
+   Positive         Negative
+    Reward           Reward
+          \           /
+           ↓         ↓
+        Model Learns
+             ↓
+     Better Recommendations
+```
+
+For example:
+
+* User likes an outfit → positive reward
+* User dislikes an outfit → negative reward
+* User repeatedly selects a particular style → system learns that preference
+
+Over time, the recommendation strategy can become more personalized based on user interaction.
 
 ---
 
@@ -212,45 +158,27 @@ Improve Future Recommendations
 
 ### Frontend
 
-* React.js
-* HTML
-* CSS
-* JavaScript
+* **HTML** – Provides the structure of the application.
+* **Tailwind CSS** – Used for responsive and modern UI styling.
+* **JavaScript** – Handles frontend logic and user interactions.
+* **React.js** – Used to build reusable UI components.
+* **Redux** – Used for centralized state management.
 
 ### Backend
 
-* Node.js
-* Express.js
-* REST APIs
+* **FastAPI** – Used to build high-performance REST APIs and handle communication between the frontend, database, and AI/ML components.
+* **Prisma ORM** – Used as the database access layer for interacting with PostgreSQL.
 
 ### Database
 
-* MongoDB / PostgreSQL
+* **PostgreSQL** – Used to store structured application data such as user information, preferences, wardrobe data, and recommendation-related data.
 
-### AI / ML
+### Cloud & AI/ML
 
-* Python
-* Pandas
-* NumPy
-* Scikit-learn
-
-### Recommendation System
-
-* Rule-Based Recommendation
-* ML-Based Recommendation
-* Hybrid Recommendation Engine
-
-### Store Integration
-
-* Product APIs
-* Store Inventory APIs
-* Location/Mapping APIs
-* E-commerce APIs
-
-### Development Tools
-
-* Git
-* GitHub
+* **AWS** – Used for cloud infrastructure and deployment.
+* **Python** – Used for AI/ML and recommendation-related processing.
+* **YOLO** – Used for image-based object detection.
+* **Reinforcement Learning** – Used for adaptive recommendation and feedback-based decision making.
 
 ---
 
@@ -259,27 +187,119 @@ Improve Future Recommendations
 ```text
 AURA-The-Fashion-Stylist/
 │
-├── client/                 # React frontend
-├── server/                 # Node.js / Express backend
-├── ml/                     # ML and recommendation logic
-├── models/                 # Database/model definitions
-├── routes/                 # REST API routes
-├── controllers/            # Business logic
-├── services/               # Product & store integration
-├── store-integrations/     # Online/offline store APIs
-├── assets/                 # Images and design resources
+├── frontend/                 # React frontend
+│   ├── components/           # Reusable UI components
+│   ├── pages/                # Application pages
+│   ├── redux/                # Redux state management
+│   └── ...
+│
+├── backend/                  # FastAPI backend
+│   ├── routes/               # REST API routes
+│   ├── controllers/          # Business logic
+│   ├── prisma/               # Prisma ORM configuration
+│   └── ...
+│
+├── ml/                       # AI/ML and recommendation logic
+│   ├── yolo/                 # YOLO-based image processing
+│   └── ...
+│
 ├── README.md
-└── package.json
+└── ...
+```
+
+---
+
+## 🔄 System Workflow
+
+```text
+User
+ ↓
+Selects Preferences / Uploads Image / Adds Wardrobe
+ ↓
+React Frontend
+ ↓
+Redux State Management
+ ↓
+FastAPI REST API
+ ↓
+ ┌──────────────────────────────┐
+ │      Recommendation Engine   │
+ └──────────────────────────────┘
+          ↓
+ ┌────────┼───────────┐
+ ↓        ↓           ↓
+Rules    YOLO       ML/RL
+ ↓        ↓           ↓
+ └────────┼───────────┘
+          ↓
+   Hybrid Scoring
+          ↓
+Personalized Outfit
+          ↓
+     User Feedback
+          ↓
+Recommendation Update
+```
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                    AURA
+                     │
+          ┌──────────┴──────────┐
+          ↓                     ↓
+      Frontend                Backend
+          │                     │
+ React + JavaScript          FastAPI
+ HTML + Tailwind CSS            │
+          │                 Prisma ORM
+       Redux                     │
+          │                     ↓
+          │                PostgreSQL
+          │
+          └────── REST API ──────┘
+                     │
+                     ↓
+                AI / ML Layer
+                     │
+              Python + YOLO
+                     │
+          Reinforcement Learning
+                     │
+                     ↓
+                    AWS
 ```
 
 ---
 
 ## 🎯 Objective
 
-The objective of AURA is to build an **intelligent end-to-end fashion assistant** that connects **personalized styling with real-world product discovery**.
+The goal of AURA is to combine **traditional fashion-styling rules with data-driven and AI-based recommendations** to create a personalized and adaptive virtual fashion stylist.
 
-Instead of simply recommending an outfit, AURA helps users answer the next question:
+The hybrid approach makes the system more flexible:
 
-> **“Where can I actually buy this outfit?”**
+* **Rule-based logic** provides consistency.
+* **YOLO** enables image-based fashion analysis.
+* **ML techniques** help identify suitable recommendations.
+* **Reinforcement Learning** enables recommendations to adapt based on user feedback.
+* **PostgreSQL** provides reliable structured data storage.
+* **FastAPI** provides the backend API layer.
+* **AWS** provides cloud infrastructure.
 
-By combining **AI-powered recommendations, virtual wardrobe management, product matching, online shopping integration, and nearby physical-store discovery**, AURA provides a complete fashion discovery and shopping experience.
+Together, these technologies allow AURA to move from a static fashion recommendation system toward a more **personalized, adaptive, and intelligent styling platform**.
+
+---
+
+## 🔮 Future Improvements
+
+* More advanced personalized recommendation models
+* Improved clothing detection and classification
+* Real-time trend integration
+* More sophisticated reinforcement-learning strategies
+* Better understanding of user preferences
+* Scalable AWS deployment
+* Improved recommendation accuracy through continuous user feedback
+
+---
